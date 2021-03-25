@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+<!-- 	mapper에서 alias 설정하는 곳 -->
+<!-- 		<typeAlias type="member.bean.MemberDTO" alias="member"/> -->
+		
+	</typeAliases>
+</configuration>

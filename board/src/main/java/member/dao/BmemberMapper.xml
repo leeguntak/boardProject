@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMemberSQL">
+
+<!-- 회원가입 -->
+	<insert id="signUp" parameterType="member.bean.MemberDTO">
+		insert into boardMembers values(#{mem_id}
+								, #{mem_pwd}
+								, #{mem_name}
+								, #{mem_tel1}
+								, #{mem_tel2}
+								, #{mem_tel3}
+								, #{mem_email1}
+								, #{mem_email2}
+								, #{mem_postcode}
+								, #{mem_address}
+								, #{mem_detailAddress}
+								, #{mem_extraAddress}
+								, sysdate)
+	</insert>
+	
+<!-- 로그인 -->
+	<select id="login" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
+		select * from boardMembers where mem_id=#{id} and mem_pwd=#{pwd}
+	</select>
+	
+</mapper>
