@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="boardMemberSQL">
+<mapper namespace="memberSQL">
 
 <!-- 회원가입 -->
 	<insert id="signUp" parameterType="member">
@@ -23,7 +23,7 @@
 	
 <!-- 로그인 -->
 	<select id="login" parameterType="java.util.Map" resultType="member">
-		select * from boardMembers where mem_id=#{id} and mem_pwd=#{pwd}
+		select * from boardMembers where mem_id = #{mem_id} and mem_pwd = #{mem_pwd}
 	</select>
 	
 </mapper>

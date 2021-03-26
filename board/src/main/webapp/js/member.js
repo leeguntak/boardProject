@@ -101,7 +101,8 @@ function loginBtn(){
 		$.ajax({
 			type : 'post',
 			url: '/board/member/login',
-			data: {'id': $('#mem_id').val(), 'pwd': $('#mem_pwd').val()},
+			data: {'mem_id': $('#mem_id').val(), 
+				   'mem_pwd': $('#mem_pwd').val()},
 			dataType: 'text',
 			success: function(data){
 				if(data == 'success'){

@@ -29,13 +29,30 @@
 	
 	<!-- 총글수 -->
 	<select id="getTotalA" resultType="int">
-		select count(*) from board
+		select count(*) from boardTable
 	</select>
 	
 	<!-- 작성한 글 확인 -->
 	<select id="getBoard" parameterType="int" resultType="board">
 		select * from boardTable where seq=#{seq}
 	</select>
+	<!-- 조회수 증가 -->
+	<update id="hitUpdate" parameterType="int">
+		update boardTable set hit=hit+1 where seq=#{seq}
+	</update>
 	
+	<!-- 게시판 검색 -->
+	<select id="getBoardListSearch" parameterType="java.util.Map" resultType="board">
+		<![CDATA[
+		select * from
+		(select rownum rn, tt.* from
+		(select * from boardTable where ${searchType} like '%'||#{keyword}||'%' order by ref desc, step asc)tt
+		)where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
 	
+	<!-- 검색한 총글수 -->
+	<select id="getBoardSearchTotalA" parameterType="java.util.Map" resultType="int">
+		select count(*) from boardTable where ${searchType} like '%'||#{keyword}||'%'
+	</select>
 </mapper>

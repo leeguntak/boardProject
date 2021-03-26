@@ -31,10 +31,8 @@ public class MemberServiceImpl implements MemberService {
 		if(memberDTO == null) {
 			return "fail";
 		}else {
-			//세션
-			session.setAttribute("memName", memberDTO.getMem_name());
-			session.setAttribute("mem_id", map.get("id"));
-			
+			session.setAttribute("mem_name", memberDTO.getMem_name());
+			session.setAttribute("mem_id", map.get("mem_id"));
 			return "success";
 		}
 	}

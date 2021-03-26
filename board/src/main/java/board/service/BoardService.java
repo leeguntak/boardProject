@@ -16,5 +16,11 @@ public interface BoardService {
 	public BoardPaging boardPaging(String pg);
 	//글 상세보기내용
 	public BoardTableDTO getBoard(String seq);
+	//조회수증가
+	public void hitUpdate(String seq);
+	//게시판 검색
+	public List<BoardTableDTO> getBoardListSearch(Map<String, String> map);
+	//게시판 검색에 쓰는 페이징
+	public BoardPaging boardPaging(Map<String, String> map);
 
 }

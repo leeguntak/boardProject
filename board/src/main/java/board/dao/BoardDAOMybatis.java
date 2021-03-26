@@ -25,7 +25,6 @@ public class BoardDAOMybatis implements BoardDAO {
 	//글목록 출력
 	@Override
 	public List<BoardTableDTO> getBoardList(Map<String, Integer> map) {
-		System.out.println("dao도착");
 		return sqlSession.selectList("boardSQL.getBoardList", map);
 	}
 	
@@ -37,6 +36,21 @@ public class BoardDAOMybatis implements BoardDAO {
 	@Override
 	public BoardTableDTO getBoard(String seq) {
 		return sqlSession.selectOne("boardSQL.getBoard", Integer.parseInt(seq));
+	}
+	//조회수 증가
+	@Override
+	public void hitUpdate(String seq) {
+		sqlSession.update("boardSQL.hitUpdate", Integer.parseInt(seq));		
+	}
+	//게시판 검색
+	@Override
+	public List<BoardTableDTO> getBoardListSearch(Map<String, String> map) {
+		return sqlSession.selectList("boardSQL.getBoardListSearch", map);
+	}
+	//게시판 검색에 쓰는 페이징
+	@Override
+	public int getBoardSearchTotalA(Map<String, String> map) {
+		return sqlSession.selectOne("boardSQL.getBoardSearchTotalA", map);
 	}
 	
 	/*

@@ -27,6 +27,7 @@ $('#boardWriteBtn').click(function(){
 				console.log(err);
 			}
 		});
+		
 	}
 });
 

@@ -5,7 +5,7 @@ $(document).ready(function(){
 		data: 'seq='+$('#seq').val(),
 		dataType : 'json',
 		success : function(data){
-			alert(JSON.stringify(data));
+			//alert(JSON.stringify(data));
 			
 			$('#subjectSpan').text(data.boardTableDTO.subject);
 			$('#seqSpan').text(data.boardTableDTO.seq);

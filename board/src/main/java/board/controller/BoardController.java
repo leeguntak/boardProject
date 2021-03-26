@@ -35,7 +35,9 @@ public class BoardController {
 	
 	//게시판목록
 	@RequestMapping(value="/boardList", method=RequestMethod.GET)
-	public String boardList(Model model) {
+	public String boardList(@RequestParam(required=false, defaultValue="1") String pg,
+							Model model) {
+		model.addAttribute("pg", pg);
 		model.addAttribute("display", "/boardPage/boardList.jsp");
 		return "/index";
 	}
@@ -48,23 +50,24 @@ public class BoardController {
 	}
 	
 	//글등록
-	@RequestMapping(value="boardWrite", method=RequestMethod.POST)
+	@RequestMapping(value="/boardWrite", method=RequestMethod.POST)
 	@ResponseBody
 	public void boardWrite(@RequestParam Map<String, String> map) {
 		boardService.boardWrite(map);
 	}
 	
 	//글목록 불러오기
-	@RequestMapping(value="getBoardList", method=RequestMethod.POST)
+	@RequestMapping(value="/getBoardList", method=RequestMethod.POST)
 	public ModelAndView getBoardList(@RequestParam(required=false, defaultValue="1") String pg,
 									 HttpSession session,
 									 HttpServletResponse response) {
-		System.out.println("목록불러오는중");
 		List<BoardTableDTO> list = boardService.getBoardList(pg);
 		//페이징처리
 		BoardPaging boardPaging = boardService.boardPaging(pg);
 		
-		System.out.println("dao까지 갔다옴");
+		//세션으로 아이디 필요
+		
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("pg", pg);
 		mav.addObject("list", list);
@@ -74,7 +77,7 @@ public class BoardController {
 	}
 	
 	//글상세보기페이지
-	@RequestMapping(value="boardView", method=RequestMethod.GET)
+	@RequestMapping(value="/boardView", method=RequestMethod.GET)
 	public String boardView(@RequestParam String seq,
 							@RequestParam(required=false, defaultValue="1") String pg,
 							Model model) {
@@ -85,14 +88,21 @@ public class BoardController {
 	}
 	
 	//글 불러오기
-	@RequestMapping(value="getBoard", method=RequestMethod.POST)
-	public ModelAndView getBoard(@RequestParam String seq,
+	@RequestMapping(value="/getBoard", method=RequestMethod.POST)
+	public ModelAndView getBoard(@RequestParam String seq,								
+								 @CookieValue(value="memHit", required=false) Cookie cookie,
 								 HttpServletResponse response,
 								 HttpSession session) {
-		//조회수 -새로고침 방지 해야됨, 아이디 세션도
-
 		BoardTableDTO boardTableDTO = boardService.getBoard(seq);
 		
+		boardService.hitUpdate(seq); //조회수 증가
+//		if(cookie != null) {
+//			cookie.setMaxAge(0); //쿠키 삭제
+//			cookie.setPath("/"); //모든 경로에서 삭제 되었음을 알림
+//			response.addCookie(cookie); //쿠키 삭제된걸 클라이언트에게 보내주기.
+//		}
+		
+		//아이디 세션
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("boardTableDTO", boardTableDTO);
@@ -100,6 +110,21 @@ public class BoardController {
 		return mav;
 	}
 	
+	//게시판 검색 
+	@RequestMapping(value="/getBoardListSearch", method=RequestMethod.POST)
+	public ModelAndView getBoardListSearch(@RequestParam Map<String,String> map) {
+		List<BoardTableDTO> list = boardService.getBoardListSearch(map); 
+		
+		//페이징 처리
+		BoardPaging boardPaging = boardService.boardPaging(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("pg", map.get("pg"));
+		mav.addObject("list", list);
+		mav.addObject("boardPaging", boardPaging);
+		mav.setViewName("jsonView");
+		return mav;
+	}
 	
 	
 	

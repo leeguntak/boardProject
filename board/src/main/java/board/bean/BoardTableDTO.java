@@ -25,10 +25,8 @@ public class BoardTableDTO {
 	private int step;
 	private int pseq;
 	private int reply;
-	private int ccomment;
 	private int hit;
-	private int imagePrice;
-	private int imageQty;
+	private int ccomment;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy.MM.dd")
 	private Date logtime;
 	

@@ -26,15 +26,15 @@
 	<!-- 검색 -->
 	    <br><br>
 	    <form id="boardSearchForm">
-	    	<input type="hidden" name="pg" value="1">
+	    	<input type="hidden" id="searchPg" name="pg" value="1">
 	    	
 	    	<div style="text-align: center;">
-				<select name="searchType" style="width: 100px;">
+				<select id="searchType" name="searchType" style="width: 100px;">
 					<option value="subject" selected>제목</option>
 					<option value="id">아이디</option>
 				</select>
 		
-				<input type="search" name="keyword" id="keyword">
+				<input type="search" id="keyword" name="keyword">
 				<input type="button" value="검 색" id="boardSearchBtn">
 			</div>
 	    </form>

@@ -9,5 +9,6 @@
 	text-align: center;
 }
 .writeTableForm{
-	border: 1px solid black;
+	position:absolute;
+	left: 440px;
 }

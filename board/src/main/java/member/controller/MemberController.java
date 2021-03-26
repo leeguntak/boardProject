@@ -50,8 +50,7 @@ public class MemberController {
 	//로그인
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
-	public String login(@RequestParam Map<String, String> map,
-						HttpSession session) {
+	public String login(@RequestParam Map<String, String> map, HttpSession session) {
 		System.out.println("컨트롤러");
 		return memberService.login(map, session);
 	}

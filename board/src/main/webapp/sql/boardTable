@@ -38,3 +38,11 @@ CREATE TABLE boardTable(
      hit NUMBER DEFAULT 0,              -- 조회수
      logtime DATE DEFAULT SYSDATE
  );
+ 
+  CREATE TABLE fileTable(
+     file_num NUMBER,
+     id VARCHAR2(20),           -- 아이디
+     file_name VARCHAR2(500),
+     file_size NUMBER,
+     seq NUMBER NOT NULL,               -- 글번호, boardTable꺼 참조
+ );
