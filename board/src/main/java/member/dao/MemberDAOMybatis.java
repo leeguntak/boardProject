@@ -25,6 +25,9 @@ public class MemberDAOMybatis implements MemberDAO {
 	public MemberDTO login(Map<String, String> map) {
 		System.out.println("dao도착");
 		System.out.println("id: "+map.get("id") +", "+"pwd: "+ map.get("pwd"));
+		/*
+		 여기까지 데이터는 가져오는데 mapper에서 null을 반환 이유를 모르겠음
+		 */
 		return sqlSession.selectOne("boardMemberSQL.login", map);
 	}
 

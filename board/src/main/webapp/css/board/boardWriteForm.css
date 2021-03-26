@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.writeDiv{
+	border: 1px solid black;
+	height:100%;
+	padding: 10px 0;
+}
+.writeDiv h3{
+	text-align: center;
+}
+.writeTableForm{
+	border: 1px solid black;
+}

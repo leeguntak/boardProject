@@ -5,7 +5,7 @@
 <mapper namespace="boardMemberSQL">
 
 <!-- 회원가입 -->
-	<insert id="signUp" parameterType="member.bean.MemberDTO">
+	<insert id="signUp" parameterType="member">
 		insert into boardMembers values(#{mem_id}
 								, #{mem_pwd}
 								, #{mem_name}
@@ -22,7 +22,7 @@
 	</insert>
 	
 <!-- 로그인 -->
-	<select id="login" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
+	<select id="login" parameterType="java.util.Map" resultType="member">
 		select * from boardMembers where mem_id=#{id} and mem_pwd=#{pwd}
 	</select>
 	

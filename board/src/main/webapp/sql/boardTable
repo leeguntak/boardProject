@@ -1,0 +1,40 @@
+CREATE TABLE boardTable(
+     SEQ NUMBER NOT NULL,               -- 글번호
+     MEM_ID VARCHAR2(20),           -- 아이디
+     MEM_NAME VARCHAR2(40),       -- 이름
+     MEM_EMAIL VARCHAR2(40),                  -- 이메일
+     SUBJECT VARCHAR2(255),    -- 제목
+     CONTENT VARCHAR2(4000),   -- 내용 
+     REF NUMBER NOT NULL,                 -- 그룹번호
+     LEV NUMBER DEFAULT 0 NOT NULL,     -- 단계
+     STEP NUMBER DEFAULT 0 NOT NULL,    -- 글순서
+     PSEQ NUMBER DEFAULT 0 NOT NULL,    -- 원글번호
+     REPLY NUMBER DEFAULT 0 NOT NULL,   -- 답변수
+     CCOMMENT NUMBER DEFAULT 0 NOT NULL, -- 댓글
+     HIT NUMBER DEFAULT 0,              -- 조회수
+     IMAGE1 varchar2(200),  
+     IMAGE2 varchar2(200), 
+     IMAGE3 varchar2(200), 
+     logtime DATE DEFAULT SYSDATE
+ );
+ 
+  CREATE SEQUENCE seq_boardTable  NOCACHE NOCYCLE;
+  
+  
+  CREATE TABLE boardTable(
+     seq NUMBER NOT NULL,               -- 글번호
+     id VARCHAR2(20),           -- 아이디
+     name VARCHAR2(40),       -- 이름
+     email VARCHAR2(40),                  -- 이메일
+     subject VARCHAR2(255) NOT NULL,    -- 제목
+     content VARCHAR2(4000) NOT NULL,   -- 내용 
+
+     ref NUMBER NOT NULL,                 -- 그룹번호
+     lev NUMBER DEFAULT 0 NOT NULL,     -- 단계
+     step NUMBER DEFAULT 0 NOT NULL,    -- 글순서
+     pseq NUMBER DEFAULT 0 NOT NULL,    -- 원글번호
+     reply NUMBER DEFAULT 0 NOT NULL,   -- 답변수
+
+     hit NUMBER DEFAULT 0,              -- 조회수
+     logtime DATE DEFAULT SYSDATE
+ );
