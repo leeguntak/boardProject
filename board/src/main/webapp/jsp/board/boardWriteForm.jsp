@@ -22,11 +22,11 @@
 				 <div id="contentDiv"></div>
 				</td>
 			</tr>
-<!-- 			<tr> -->
-<!-- 				<td colspan="2"> -->
-<!-- 				   <input type="file" id="image" name="img[]" size="50" multiple="true" accept="image/jpg, image/jpeg, image/png"> -->
-<!-- 				</td> -->
-<!-- 			</tr> -->
+			<tr>
+				<td colspan="2">
+				   <input type="file" id="file1" name="file" size="50" multiple="true">
+				</td>
+			</tr>
 			<tr>
 				<td align="center" colspan="2">
 				 <input type="button" value="글쓰기" id="boardWriteBtn">

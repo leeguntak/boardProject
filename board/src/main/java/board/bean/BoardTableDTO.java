@@ -17,9 +17,8 @@ public class BoardTableDTO {
 	private String mem_email;
 	private String subject;
 	private String content;
-	private String image1;
-	private String image2;
-	private String image3;
+	private String file1;
+	private String file2;
 	private int ref;
 	private int lev;
 	private int step;

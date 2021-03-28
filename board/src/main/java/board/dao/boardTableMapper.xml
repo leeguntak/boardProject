@@ -5,9 +5,9 @@
 <mapper namespace="boardSQL">
 
 <!-- 글등록 -->
-	<insert id="boardWrite" parameterType="java.util.Map">
-		insert into boardTable(seq,subject,content,ref) 
-					values(seq_board.nextval, #{subject}, #{content}, seq_board.currval)
+	<insert id="boardWrite" parameterType="board">
+		insert into boardTable(seq,subject,content,file1,ref) 
+					values(seq_board.nextval, #{subject}, #{content}, #{file1}, seq_board.currval)
 	</insert>
 	<!-- 
 	<insert id="boardWrite" parameterType="board.bean.BoardTableDTO">

@@ -7,6 +7,14 @@
 <div class="boardListDiv">
 	<div class="btnGroup">
 		<a href="/board/board/boardWriteForm" class="classname">글쓰기</a>
+		<!-- 디폴트 10개 -->
+		<input type="hidden" id="viewNumHidden" name="viewNumHidden" value="10">
+		<input type="hidden" id="viewNum" name="viewNum" value="${viewNum }"><!-- 선택된 selectPrint-->
+			<select class="selectPrint" id="selectPrint">
+			  <option value="10" selected>10개</option>
+			  <option value="50">50개</option>
+			  <option value="100">100개</option>
+			</select>
 	</div>
 	<div class="table">
 	    <table id="boardListTable" >

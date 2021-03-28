@@ -8,7 +8,8 @@ import board.bean.BoardTableDTO;
 public interface BoardDAO {
 
 	//글등록
-	public void boardWrite(Map<String, String> map);
+	//public void boardWrite(Map<String, String> map);
+	public void boardWrite(BoardTableDTO boardTableDTO);
 	//글목록 출력
 	public List<BoardTableDTO> getBoardList(Map<String, Integer> map);
 	public int getTotalA();

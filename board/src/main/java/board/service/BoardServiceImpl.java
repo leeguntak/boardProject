@@ -19,16 +19,21 @@ public class BoardServiceImpl implements BoardService {
 	private BoardPaging boardPaging;
 	
 	@Override
+	/*
 	public void boardWrite(Map<String, String> map) {
-		//로그인 완성해서 세션으로 id,name을 mpa으로 넣어야 함
+		//로그인 완성해서 세션으로 id,name을 map으로 넣어야 함
 		boardDAO.boardWrite(map);
 	}
-
+	 */
+	public void boardWrite(BoardTableDTO boardTableDTO) {
+		boardDAO.boardWrite(boardTableDTO);
+	}
+	
 	@Override
-	public List<BoardTableDTO> getBoardList(String pg) {
+	public List<BoardTableDTO> getBoardList(String pg, String viewNum) {
 		//1페이지당 10개씩
-		int endNum = Integer.parseInt(pg)*10;
-		int startNum = endNum-9;
+		int endNum = Integer.parseInt(pg)*Integer.parseInt(viewNum);
+		int startNum = endNum-(Integer.parseInt(viewNum)-1);
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
@@ -39,12 +44,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardPaging boardPaging(String pg) {
+	public BoardPaging boardPaging(String pg, String viewNum) {
 		int totalA = boardDAO.getTotalA();//총글수
 		
 		boardPaging.setCurrentPage(Integer.parseInt(pg));
 		boardPaging.setPageBlock(10);
-		boardPaging.setPageSize(10);
+		boardPaging.setPageSize(Integer.parseInt(viewNum));
 		boardPaging.setTotalA(totalA);
 		boardPaging.makePagingHTML();
 		return boardPaging;
@@ -62,8 +67,10 @@ public class BoardServiceImpl implements BoardService {
 	//게시판 검색
 	@Override
 	public List<BoardTableDTO> getBoardListSearch(Map<String, String> map) {
-		int endNum = Integer.parseInt(map.get("pg"))*5;
-		int startNum = endNum-4;
+		int viewNum = Integer.parseInt(map.get("viewNum"));
+		
+		int endNum = Integer.parseInt(map.get("pg"))*viewNum;
+		int startNum = endNum-(viewNum-1);
 		
 		//map에는 pg, searchType, keyword, startNum, endNum
 		map.put("startNum", startNum+"");
@@ -74,16 +81,20 @@ public class BoardServiceImpl implements BoardService {
 	//게시판 검색에 쓰는 페이징
 	@Override
 	public BoardPaging boardPaging(Map<String, String> map) {
-		int totalA = boardDAO.getBoardSearchTotalA(map);
+		int viewNum = Integer.parseInt(map.get("viewNum"));
+		
+		int boardSearchTotalA = boardDAO.getBoardSearchTotalA(map);
 		//총글수 - searchType, keyword 가져가야함
 		
 		boardPaging.setCurrentPage(Integer.parseInt(map.get("pg")));
 		boardPaging.setPageBlock(10);
-		boardPaging.setPageSize(10);
-		boardPaging.setTotalA(totalA);
+		boardPaging.setPageSize(viewNum);
+		boardPaging.setTotalA(boardSearchTotalA);
 		boardPaging.makePagingHTML();
 		return boardPaging;
 	}
+
+	
 	
 
 	/*

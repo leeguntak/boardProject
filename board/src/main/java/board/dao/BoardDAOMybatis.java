@@ -19,8 +19,13 @@ public class BoardDAOMybatis implements BoardDAO {
 	private SqlSession sqlSession;
 	
 	@Override
+	/*
 	public void boardWrite(Map<String, String> map) {
 		sqlSession.insert("boardSQL.boardWrite", map);
+	}
+	*/
+	public void boardWrite(BoardTableDTO boardTableDTO) {
+		sqlSession.insert("boardSQL.boardWrite", boardTableDTO);
 	}
 	//글목록 출력
 	@Override

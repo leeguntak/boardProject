@@ -12,6 +12,7 @@ $(document).ready(function(){
 			$('#idSpan').text(data.boardTableDTO.id);
 			$('#hitSpan').text(data.boardTableDTO.hit);
 			$('#contentSpan').text(data.boardTableDTO.content);
+			$('#fileNamespan').text(data.boardTableDTO.file1);
 			
 		},
 		error: function(err){
@@ -19,3 +20,20 @@ $(document).ready(function(){
 		}
 	});
 });
+
+//파일 다운로드
+//$('#filrDownload').click(function(){
+//	let fileName = $('#fileDownload').val();
+//	window.location = "/board/board/fileDownload?fileName="+"fileName";
+////	$.ajax({
+////		type: 'post',
+////		url: '/board/board/fileDownload',
+////		data: {'fileName': $('#fileDownload').val()},
+////		success:function(){
+////			window.location = 
+////		},
+////		error: function(){
+////			alert("오류가 발생했습니다.");
+////		}
+////	});
+//});

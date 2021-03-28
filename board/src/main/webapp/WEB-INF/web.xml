@@ -30,6 +30,9 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+
+
+
 <!-- 스프링 파라미터로 한글을 넘길 때-->
 	<filter>
 		<filter-name>encodingFilter</filter-name>

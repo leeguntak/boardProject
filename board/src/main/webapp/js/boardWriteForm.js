@@ -13,29 +13,11 @@ $('#boardWriteBtn').click(function(){
 		$('#contentDiv').css('font-size','8pt');
 		$('#contentDiv').css('font-weight','bold');
 	}else{
-	
-		$.ajax({
-			type: 'post',
-			url: '/board/board/boardWrite',
-			data: {'subject': $('#subject').val(),
-				   'content': $('#content').val()},
-			success: function(){
-				alert('글쓰기 완료');
-				location.href='/board/board/boardList';
-			},
-			error: function(err){
-				console.log(err);
-			}
-		});
 		
-	}
-});
-
-/*
- 	let formData = new FormData($('#writeForm')[0]);
+		let formData = new FormData($('#writeForm')[0]);
 		console.log(formData);
- 
- $.ajax({
+		
+		$.ajax({
 			type: 'post',
 			enctype: 'multipart/form-data',
 			processData: false, 
@@ -50,6 +32,28 @@ $('#boardWriteBtn').click(function(){
 				console.log(err);
 			}
 		});
+		
+	}
+});
+
+/*
+		
  
  
+ 
+ =============================
+ 일반 글쓰기
+ $.ajax({
+			type: 'post',
+			url: '/board/board/boardWrite',
+			data: {'subject': $('#subject').val(),
+				   'content': $('#content').val()},
+			success: function(){
+				alert('글쓰기 완료');
+				location.href='/board/board/boardList';
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
  */

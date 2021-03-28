@@ -25,7 +25,7 @@ public class MemberController {
 	//회원가입화면
 	@RequestMapping(value="/signUpForm", method=RequestMethod.GET)
 	public String signUpForm(Model model) {
-		model.addAttribute("display", "/memberPage/signUpForm.jsp");
+		model.addAttribute("display", "/jsp/login/signUpForm.jsp");
 		return "/index";
 	}
 	
@@ -37,14 +37,14 @@ public class MemberController {
 		System.out.println(signUpCheck);
 		
 		model.addAttribute("signUpCheck", signUpCheck);
-		model.addAttribute("display", "/memberPage/signUpForm.jsp");
+		model.addAttribute("display", "/jsp/login/signUpForm.jsp");
 		return "/index";
 	}
 	
 	//로그인화면
 	@RequestMapping(value="/loginForm", method=RequestMethod.GET)
 	public String loginForm() {
-		return "/memberPage/loginForm";
+		return "/jsp/login/loginForm";
 	}
 	
 	//로그인

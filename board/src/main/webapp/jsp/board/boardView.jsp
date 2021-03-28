@@ -23,8 +23,14 @@
 			style="white-space: pre-wrap; word-break: break-all;"><span id="contentSpan"></span>
 			</td>
 		</tr>
+		
+		<tr>
+		<td>첨부파일: </td>
+        <td colspan="2"> <a class="fileDownload"><span id="fileNamespan"/></a> </td>
+   		</tr>
 	</table>
 	<div class="button">
+	<br>
 		<input type="button" value="목록" onclick="location.href='../board/boardList?pg=${pg }'">
 		
 		<span id="boardViewSpan">
