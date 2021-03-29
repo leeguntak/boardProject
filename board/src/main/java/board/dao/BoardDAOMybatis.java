@@ -19,11 +19,6 @@ public class BoardDAOMybatis implements BoardDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	/*
-	public void boardWrite(Map<String, String> map) {
-		sqlSession.insert("boardSQL.boardWrite", map);
-	}
-	*/
 	public void boardWrite(BoardTableDTO boardTableDTO) {
 		sqlSession.insert("boardSQL.boardWrite", boardTableDTO);
 	}
@@ -56,6 +51,13 @@ public class BoardDAOMybatis implements BoardDAO {
 	@Override
 	public int getBoardSearchTotalA(Map<String, String> map) {
 		return sqlSession.selectOne("boardSQL.getBoardSearchTotalA", map);
+	}
+	
+	
+	//엑셀출력
+	@Override
+	public List<BoardTableDTO> selectAll() {
+		return sqlSession.selectList("boardSQL.selectAll");
 	}
 	
 	/*

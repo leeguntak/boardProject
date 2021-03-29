@@ -83,4 +83,4 @@
 </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="../js/member.js"></script>
+<script type="text/javascript" src="/board/js/member.js"></script>

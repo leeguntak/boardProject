@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<link rel="stylesheet" href="../css/board/boardWriteForm.css">
+<link rel="stylesheet" href="/board/css/board/boardWriteForm.css">
 
 <div class="writeDiv">
 <h3>게시판 글쓰기</h3>
@@ -39,4 +39,4 @@
 </div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="../js/boardWriteForm.js"></script>
+<script type="text/javascript" src="/board/js/boardWriteForm.js"></script>

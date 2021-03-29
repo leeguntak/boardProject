@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="../css/board/boardList.css">
+<link rel="stylesheet" href="/board/css/board/boardList.css">
 
 <input type="hidden" id="pg" value="${pg }">
 <div class="boardListDiv">
@@ -15,6 +15,9 @@
 			  <option value="50">50개</option>
 			  <option value="100">100개</option>
 			</select>
+		<form method="get" action="/board/excel/excelDownload">
+			<button type="submit">Excel</button>
+		</form>
 	</div>
 	<div class="table">
 	    <table id="boardListTable" >
@@ -50,6 +53,6 @@
 </div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="../js/boardList.js"></script>
+<script type="text/javascript" src="/board/js/boardList.js"></script>
 
 

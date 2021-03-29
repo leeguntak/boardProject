@@ -8,10 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -27,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 import board.bean.BoardPaging;
 import board.bean.BoardTableDTO;
 import board.service.BoardService;
+import index.controller.IndexController;
 
 @Controller
 @RequestMapping(value="board")
@@ -34,6 +39,8 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	private static final String FILEPATH = "D:\\Spring\\workspace\\board\\src\\main\\webapp\\storage";
+	
+	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 	
 	//게시판목록
 	@RequestMapping(value="/boardList", method=RequestMethod.GET)
@@ -51,14 +58,14 @@ public class BoardController {
 	public ModelAndView getBoardList(@RequestParam(required=false, defaultValue="1") String pg,
 									 @RequestParam(required=false, defaultValue="10") String viewNum,
 									 HttpSession session,
+									 HttpServletRequest request,
 									 HttpServletResponse response) {
 		List<BoardTableDTO> list = boardService.getBoardList(pg, viewNum);
 		//페이징처리
 		BoardPaging boardPaging = boardService.boardPaging(pg, viewNum);
 		
 		//세션으로 아이디 필요
-		
-		
+		logger.info("info 로그"+request);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("pg", pg);
 		mav.addObject("list", list);

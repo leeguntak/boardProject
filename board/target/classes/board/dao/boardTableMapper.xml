@@ -9,16 +9,7 @@
 		insert into boardTable(seq,subject,content,file1,ref) 
 					values(seq_board.nextval, #{subject}, #{content}, #{file1}, seq_board.currval)
 	</insert>
-	<!-- 
-	<insert id="boardWrite" parameterType="board.bean.BoardTableDTO">
-		insert into boardTable(SEQ, SUBJECT, CONTENT, REF, IMAGE1, logtime) 
-							values(seq_boardTable.nextva
-									, #{subject}
-									, #{content}
-									, #{image1}
-									, sysdate)
-	</insert>
-	-->
+	
 <!-- 글목록 출력 -->
 	<select id="getBoardList" parameterType="java.util.Map" resultType="board">
 		select * from
@@ -54,5 +45,14 @@
 	<!-- 검색한 총글수 -->
 	<select id="getBoardSearchTotalA" parameterType="java.util.Map" resultType="int">
 		select count(*) from boardTable where ${searchType} like '%'||#{keyword}||'%'
+	</select>
+	
+	
+	
+	
+	<!-- 엑셀출력 -->
+	<select id="selectAll" resultType="board">
+<!-- 		select seq, subject, mem_id, logtime form boardTable -->
+		select seq, subject, hit, logtime from boardTable
 	</select>
 </mapper>

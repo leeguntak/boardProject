@@ -21,5 +21,8 @@ public interface BoardDAO {
 	public List<BoardTableDTO> getBoardListSearch(Map<String, String> map);
 	//게시판 검색에 쓰는 페이징
 	public int getBoardSearchTotalA(Map<String, String> map);
+	
+	//엑셀출력ㄴ
+	public List<BoardTableDTO> selectAll();
 
 }

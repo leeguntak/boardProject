@@ -95,6 +95,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	
+	//엑셀출력
+	@Override
+	public List<BoardTableDTO> selectAll() {
+		return boardDAO.selectAll();
+	}
+
+	
 	
 
 	/*

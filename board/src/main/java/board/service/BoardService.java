@@ -23,5 +23,8 @@ public interface BoardService {
 	public List<BoardTableDTO> getBoardListSearch(Map<String, String> map);
 	//게시판 검색에 쓰는 페이징
 	public BoardPaging boardPaging(Map<String, String> map);
+	
+	//엑셀 출력
+	public List<BoardTableDTO> selectAll();
 
 }

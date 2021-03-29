@@ -28,5 +28,4 @@ public class BoardTableDTO {
 	private int ccomment;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy.MM.dd")
 	private Date logtime;
-	
 }
