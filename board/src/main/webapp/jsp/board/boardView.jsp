@@ -35,7 +35,7 @@
 		
 		<span id="boardViewSpan">
 			<input type="button" value="글수정" onclick="mode(1)">
-			<input type="button" value="글삭제" onclick="mode(2)">
+			<input type="button" value="글삭제" id="boardDelete">
 		</span>
 		
 		<input type="button" value="답글" onclick="mode(3)">

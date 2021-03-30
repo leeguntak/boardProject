@@ -109,6 +109,12 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.selectAll(map);
 	}
 
+	//글삭제
+	@Override
+	public void boardDelete(String seq) {
+		boardDAO.boardDelete(seq);
+	}
+
 	
 	
 

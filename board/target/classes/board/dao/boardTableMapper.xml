@@ -60,4 +60,16 @@
 		)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
 	</select>
 	
+	
+	<!-- 글삭제 -->
+	<delete id="boardDelete" parameterType="int">
+		begin
+			update boardTable set reply=reply-1 where seq = (select pseq from board where seq=#{seq});
+			
+			update boardTable set subject=concat('[원글이 삭제된 답글]',subject) where pseq=#{seq};
+			
+			delete from boardTable where seq=#{seq};
+		end;
+	</delete>
+	
 </mapper>

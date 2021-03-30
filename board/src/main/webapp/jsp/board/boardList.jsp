@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/board/css/board/boardList.css">
 
@@ -29,7 +30,10 @@
 	            <th width="100px">작성일</th>
 	        </tr>
 	    </table>
-	    
+
+<!-- 여기에 jstl사용해서 td생성 
+값은 에이작스르 통해 제이슨으로 가져오기   책551-->
+
 	<!-- 페이징  -->
 	    <br>
 	    <div id="boardPagingDiv" class="paging" align="center"></div>

@@ -21,6 +21,21 @@ $(document).ready(function(){
 	});
 });
 
+
+//삭제
+$('#boardDelete').click(function(){
+	let seq = $('#seq').val();
+	if(confirm('글을 삭제하시겠습니까?')==true){
+		location.href="/board/board/boardDelete?seq="+seq;
+		alert('삭제되었습니다.');
+	}
+
+});
+
+
+
+
+
 //파일 다운로드
 //$('#filrDownload').click(function(){
 //	let fileName = $('#fileDownload').val();

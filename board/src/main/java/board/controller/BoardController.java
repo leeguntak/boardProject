@@ -168,6 +168,17 @@ public class BoardController {
 		return mav;
 	}
 	
+	//글 삭제
+	@RequestMapping(value="/boardDelete", method=RequestMethod.GET)
+	public ModelAndView boardDelete(@RequestParam String seq) {
+		
+		boardService.boardDelete(seq);
+		
+		ModelAndView mav = new ModelAndView("redirect:/board/boardList");
+		return mav;
+	}
+	
+	
 //	//파일 다운로드
 //	@RequestMapping(value="/fileDownload", method=RequestMethod.GET)
 //	public ModelAndView download(@RequestParam String fileName) {

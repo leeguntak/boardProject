@@ -62,6 +62,14 @@ public class BoardDAOMybatis implements BoardDAO {
 	public List<BoardTableDTO> selectAll(Map<String, Integer> map) {
 		return sqlSession.selectList("boardSQL.selectAll", map);
 	}
+
+	
+	//글삭제
+	@Override
+	public void boardDelete(String seq) {
+		sqlSession.delete("boardSQL.boardDelete", Integer.parseInt(seq)); 		
+	}
+	
 	
 	/*
 	//글등록

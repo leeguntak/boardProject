@@ -22,7 +22,10 @@ public interface BoardDAO {
 	//게시판 검색에 쓰는 페이징
 	public int getBoardSearchTotalA(Map<String, String> map);
 	
-	//엑셀출력ㄴ
+	//엑셀출력
 	public List<BoardTableDTO> selectAll(Map<String, Integer> map);
+	
+	//글삭제
+	public void boardDelete(String seq);
 
 }

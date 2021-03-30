@@ -26,5 +26,8 @@ public interface BoardService {
 	
 	//엑셀 출력
 	public List<BoardTableDTO> selectAll(String pg, String viewNum);
+	
+	//글삭제
+	public void boardDelete(String seq);
 
 }
