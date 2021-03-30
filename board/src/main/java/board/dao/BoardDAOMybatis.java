@@ -22,6 +22,7 @@ public class BoardDAOMybatis implements BoardDAO {
 	public void boardWrite(BoardTableDTO boardTableDTO) {
 		sqlSession.insert("boardSQL.boardWrite", boardTableDTO);
 	}
+	
 	//글목록 출력
 	@Override
 	public List<BoardTableDTO> getBoardList(Map<String, Integer> map) {
@@ -32,11 +33,13 @@ public class BoardDAOMybatis implements BoardDAO {
 	public int getTotalA() {
 		return sqlSession.selectOne("boardSQL.getTotalA");
 	}
+	
 	//글상세보기
 	@Override
 	public BoardTableDTO getBoard(String seq) {
 		return sqlSession.selectOne("boardSQL.getBoard", Integer.parseInt(seq));
 	}
+	
 	//조회수 증가
 	@Override
 	public void hitUpdate(String seq) {
@@ -56,8 +59,8 @@ public class BoardDAOMybatis implements BoardDAO {
 	
 	//엑셀출력
 	@Override
-	public List<BoardTableDTO> selectAll() {
-		return sqlSession.selectList("boardSQL.selectAll");
+	public List<BoardTableDTO> selectAll(Map<String, Integer> map) {
+		return sqlSession.selectList("boardSQL.selectAll", map);
 	}
 	
 	/*

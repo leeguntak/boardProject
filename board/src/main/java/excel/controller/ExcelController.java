@@ -1,7 +1,9 @@
 package excel.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import board.bean.BoardTableDTO;
 import board.service.BoardService;
@@ -33,9 +36,13 @@ public class ExcelController {
 	private BoardService boardService;
 	
 	@RequestMapping(value="/excelDownload", method=RequestMethod.GET)
-	public void excelDownload(HttpServletResponse response) throws IOException{
-
-		List<BoardTableDTO> boardTableList = boardService.selectAll();
+	public void excelDownload(@RequestParam(required=false, defaultValue="1") String pg,
+							  @RequestParam(required=false, defaultValue="10") String viewNum,
+							  HttpServletResponse response) throws IOException{
+		System.out.println(pg);
+		System.out.println(viewNum);
+		
+		List<BoardTableDTO> boardTableList = boardService.selectAll(pg, viewNum);
 		
 		//셀생성
 		XSSFWorkbook objWorkBook = new XSSFWorkbook();

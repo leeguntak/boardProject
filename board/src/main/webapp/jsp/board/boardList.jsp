@@ -3,19 +3,19 @@
 
 <link rel="stylesheet" href="/board/css/board/boardList.css">
 
-<input type="hidden" id="pg" value="${pg }">
 <div class="boardListDiv">
 	<div class="btnGroup">
 		<a href="/board/board/boardWriteForm" class="classname">글쓰기</a>
-		<!-- 디폴트 10개 -->
-		<input type="hidden" id="viewNumHidden" name="viewNumHidden" value="10">
-		<input type="hidden" id="viewNum" name="viewNum" value="${viewNum }"><!-- 선택된 selectPrint-->
-			<select class="selectPrint" id="selectPrint">
-			  <option value="10" selected>10개</option>
-			  <option value="50">50개</option>
-			  <option value="100">100개</option>
-			</select>
+		<select class="selectPrint" id="selectPrint">
+		  <option value="10" selected>10개</option>
+		  <option value="50">50개</option>
+		  <option value="100">100개</option>
+		</select>
+		
 		<form method="get" action="/board/excel/excelDownload">
+				<!-- 게시판 글 리스트의 디폴트는 10개 -->
+				<input type="hidden" id="viewNum" name="viewNum" value="${viewNum }"><!-- 선택된 selectPrint의 value가 담긴다-->
+				<input type="hidden" id="pg" name="pg" value="${pg }"><!-- 디폴트는 1이고 보고있는 페이지의 숫자가 담긴다. -->
 			<button type="submit">Excel</button>
 		</form>
 	</div>
@@ -51,6 +51,7 @@
 	    </form>
 	</div>
 </div>
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="/board/js/boardList.js"></script>

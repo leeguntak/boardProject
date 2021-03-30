@@ -97,8 +97,16 @@ public class BoardServiceImpl implements BoardService {
 	
 	//엑셀출력
 	@Override
-	public List<BoardTableDTO> selectAll() {
-		return boardDAO.selectAll();
+	public List<BoardTableDTO> selectAll(String pg, String viewNum) {
+		//1페이지당 10개씩
+		int endNum = Integer.parseInt(pg)*Integer.parseInt(viewNum);
+		int startNum = endNum-(Integer.parseInt(viewNum)-1);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		
+		return boardDAO.selectAll(map);
 	}
 
 	

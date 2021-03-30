@@ -43,6 +43,10 @@
 		<beans:property name="maxUploadSize" value="52428800" /><!-- 50mb -->
 	</beans:bean>
 	
+<!-- 	<beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> -->
+<!-- 		<property name="basePackage" value="myspring.user.dao"/> -->
+<!-- 		<property name="annotationClass" value="myspring.user.dao.MyMapper"/> -->
+<!-- 	</beans:bean> -->
 	
 	
 </beans:beans>

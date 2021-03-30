@@ -25,6 +25,6 @@ public interface BoardService {
 	public BoardPaging boardPaging(Map<String, String> map);
 	
 	//엑셀 출력
-	public List<BoardTableDTO> selectAll();
+	public List<BoardTableDTO> selectAll(String pg, String viewNum);
 
 }

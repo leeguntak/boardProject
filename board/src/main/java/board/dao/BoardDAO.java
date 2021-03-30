@@ -23,6 +23,6 @@ public interface BoardDAO {
 	public int getBoardSearchTotalA(Map<String, String> map);
 	
 	//엑셀출력ㄴ
-	public List<BoardTableDTO> selectAll();
+	public List<BoardTableDTO> selectAll(Map<String, Integer> map);
 
 }

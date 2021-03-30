@@ -51,8 +51,13 @@
 	
 	
 	<!-- 엑셀출력 -->
-	<select id="selectAll" resultType="board">
-<!-- 		select seq, subject, mem_id, logtime form boardTable -->
-		select seq, subject, hit, logtime from boardTable
+	<select id="selectAll" parameterType="java.util.Map" resultType="board">
+<!-- 전체출력 아이디 있을때		select seq, subject, mem_id, logtime form boardTable -->
+<!-- 전체출력 아이디 없을때		select seq, subject, hit, logtime from boardTable -->
+		select * from
+		(select rownum rn, tt.* from
+		(select seq, subject, hit, logtime from boardTable order by ref desc, step asc)tt
+		)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
 	</select>
+	
 </mapper>
