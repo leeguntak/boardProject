@@ -2,6 +2,8 @@ package member.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +52,14 @@ public class MemberController {
 	//로그인
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
-	public String login(@RequestParam Map<String, String> map, HttpSession session) {
+	public String login(@RequestParam Map<String, String> map, HttpSession session, 
+						HttpServletRequest request, HttpServletResponse response) {
+		// login.jsp에서 아이디기억하기 name값(remember) 가져오기
+		String user_check = request.getParameter("remember_userId");
+		map.put("user_check", user_check);
+
 		System.out.println("컨트롤러");
-		return memberService.login(map, session);
+		return memberService.login(map, session, response);
 	}
 
 }

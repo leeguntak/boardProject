@@ -20,11 +20,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +36,8 @@ import board.bean.BoardTableDTO;
 import board.service.BoardService;
 import index.controller.IndexController;
 
+//@RestController 
+//@RestController 는 @Controller 와 @ResponseBody 포함
 @Controller
 @RequestMapping(value="board")
 public class BoardController {
@@ -42,8 +47,8 @@ public class BoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 	
-	//게시판목록
-	@RequestMapping(value="/boardList", method=RequestMethod.GET)
+
+	@RequestMapping(value="/boardList", method=RequestMethod.GET) //requestMapping대신 getmapping을 사용하면서 method 안씀
 	public String boardList(@RequestParam(required=false, defaultValue="1") String pg,
 							@RequestParam(required=false, defaultValue="10") String viewNum,
 							Model model) {
@@ -54,7 +59,8 @@ public class BoardController {
 	}
 	
 	//글목록 불러오기
-	@RequestMapping(value="/getBoardList", method=RequestMethod.POST)
+	//@RequestMapping(value="/getBoardList", method=RequestMethod.POST)
+	@GetMapping(value="/getBoardList")
 	public ModelAndView getBoardList(@RequestParam(required=false, defaultValue="1") String pg,
 									 @RequestParam(required=false, defaultValue="10") String viewNum,
 									 HttpSession session,
@@ -77,7 +83,8 @@ public class BoardController {
 	
 	
 	//게시판 검색 
-		@RequestMapping(value="/getBoardListSearch", method=RequestMethod.POST)
+	//@RequestMapping(value="/getBoardListSearch", method=RequestMethod.POST)
+	@GetMapping(value="/getBoardListSearch")
 		public ModelAndView getBoardListSearch(@RequestParam Map<String,String> map) {
 			List<BoardTableDTO> list = boardService.getBoardListSearch(map);
 			//map에 담기는 것들pg, keyword, searchType, viewNum
@@ -106,8 +113,9 @@ public class BoardController {
 	
 	
 	//글등록
-	@RequestMapping(value="boardWrite", method=RequestMethod.POST)
-	@ResponseBody
+//	@RequestMapping(value="boardWrite", method=RequestMethod.POST)
+//	@ResponseBody
+	@PostMapping(value="boardWrite")
 	public void boardWrite(@ModelAttribute BoardTableDTO boardTableDTO,
 							@RequestParam MultipartFile file) {
 

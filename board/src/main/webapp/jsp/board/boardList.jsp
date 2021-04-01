@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/board/css/board/boardList.css">
+
 
 <div class="boardListDiv">
 	<div class="btnGroup">
@@ -29,7 +31,25 @@
 	            <th width="100px">조회수</th>
 	            <th width="100px">작성일</th>
 	        </tr>
+<%-- 	        <c:forEach var="data" items="${data}"> --%>
+<!-- 	        <tr> -->
+<!-- 	        	<td>{data.list.seq}</td> -->
+<!-- 	        	<td>{data.list.subject}</td> -->
+<!-- 	        	<td>0</td> -->
+<!-- 	        	<td>{data.list.hit}</td> -->
+<!-- 	        	<td>{data.list.logtime}</td> -->
+<!-- 	        <tr> -->
+<%-- 	        </c:forEach>	 --%>
 	    </table>
+	    <div> 
+
+<c:forEach items="${data1 }" var="boardList" >
+ 
+<div>${boardpaing}</div>
+
+</c:forEach> 
+
+</div>
 
 <!-- 여기에 jstl사용해서 td생성 
 값은 에이작스르 통해 제이슨으로 가져오기   책551-->

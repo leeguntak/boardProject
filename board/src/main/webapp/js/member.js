@@ -102,7 +102,8 @@ function loginBtn(){
 			type : 'post',
 			url: '/board/member/login',
 			data: {'mem_id': $('#mem_id').val(), 
-				   'mem_pwd': $('#mem_pwd').val()},
+				   'mem_pwd': $('#mem_pwd').val(),
+				   'remember_userId': $('#remember_us').is(':checked')},
 			dataType: 'text',
 			success: function(data){
 				if(data == 'success'){

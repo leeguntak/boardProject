@@ -1,3 +1,4 @@
+
 //처음 들어가자 마자 페이지 출력
 $(document).ready(function(){
 	boardListPrint();
@@ -14,37 +15,34 @@ $('#selectPrint').change(function(){
 
 function boardListPrint(){
 	$.ajax({
-		type:'post',
+		type:'get',
 		url:'/board/board/getBoardList',
 		data: {'pg': $('#pg').val(),
 			   'viewNum': $('#viewNum').val()},
 		dataType:'json',
 		success: function(data){
+			//alert(JSON.stringify(data.list));
+			//alert(JSON.stringify(data.boardPaging));
 			$('#boardListTable tr:gt(0)').remove();
 			$.each(data.list, function(index, items){
-				$('<tr/>').append($('<td/>',{
-					align: 'center',
-					text: items.seq
-				})).append($('<td/>',{
-					}).append($('<a/>',{
-						href: '#',
-						text: items.subject,
-						id: 'subjectA',
-					}))
-				).append($('<td/>',{
-					align: 'center',
-					text: items.id
-				})).append($('<td/>',{
-					align: 'center',
-					text: items.hit
-				})).append($('<td/>',{
-					align: 'center',
-					text: items.logtime
-				})).appendTo($('#boardListTable'));
+				
+				var html ="";
+				
+				for(i in data.list){
+					html += "<tr>";
+					html += "<td>"+data.list[i].seq+"</td>";
+					html += "<td><a href:'#' id:'subjectA'>"+data.list[i].subject+"</a></td>";
+					html += "<td>"+null+"</td>";
+					html += "<td>"+data.list[i].hit+"</td>";
+					html += "<td>"+data.list[i].logtime+"</td>";
+					html += "</tr>";
+				}
+				$('#boardListTable tr:gt(0)').empty();
+				$('#boardListTable').append(html);
 				
 				$('#boardListTable').on('click', '#subjectA', function(){
-					//alert($(this).prop('tagName'));
-					//alert("seq는 "+$(this).parent().prev().text());
+					alert($(this).prop('tagName'));
+					alert("seq는 "+$(this).parent().prev().text());
 					
 					let seq = $(this).parent().prev().text();
 					let pg = data.pg;
@@ -84,7 +82,7 @@ $('#boardSearchBtn').click(function(event, str){
 		alert("검색어를 입력하세요");
 	}else{
 		$.ajax({
-			type: 'post',
+			type: 'get',
 			url: '/board/board/getBoardListSearch',
 			data: {'pg': $('#pg').val(),
 	               'searchType':$('#searchType').val(),
@@ -92,39 +90,9 @@ $('#boardSearchBtn').click(function(event, str){
 	               'viewNum': $('#viewNum').val()},
 			dataType: 'json',
 			success: function(data){
-				//alert(JSON.stringify(data));
-				$('#boardListTable tr:gt(0)').remove();
+				alert(JSON.stringify(data));
 				
 				$.each(data.list, function(index, items){
-					$('<tr/>').append($('<td/>',{
-						align: 'center',
-						text: items.seq
-					})).append($('<td/>',{
-						}).append($('<a/>',{
-							href: '#',
-							text: items.subject,
-							id: 'subjectA',
-						}))
-					).append($('<td/>',{
-						align: 'center',
-						text: items.id
-					})).append($('<td/>',{
-						align: 'center',
-						text: items.hit
-					})).append($('<td/>',{
-						align: 'center',
-						text: items.logtime
-					})).appendTo($('#boardListTable'));
-					
-					$('#boardListTable').on('click', '#subjectA', function(){
-						//alert($(this).prop('tagName'));
-						//alert("seq는 "+$(this).parent().prev().text());
-						
-						let seq = $(this).parent().prev().text();
-						let pg = data.pg;
-						location.href = '/board/board/boardView?seq='+seq+"&pg="+pg;
-					});
-					
 					//페이징 처리
 					$('#boardPagingDiv').html(data.boardPaging.pagingHTML);
 				});//each
