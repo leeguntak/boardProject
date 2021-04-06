@@ -14,18 +14,21 @@
 	<select id="getBoardList" parameterType="java.util.Map" resultType="board">
 		select * 
 		from(select rownum rn, tt.* 
-		from(select * from boardTable order by ref desc, step asc)tt
+		from(select * from boardTable 
+		order by ref desc, step asc)tt
 		)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
 	</select>
 	
 	<!-- 총글수 -->
 	<select id="getTotalA" resultType="int">
-		select count(*) from boardTable
+		select count(seq) from boardTable
 	</select>
 	
 	<!-- 작성한 글 확인 -->
 	<select id="getBoard" parameterType="int" resultType="board">
-		select * from boardTable where seq=#{seq}
+		select seq,subject,content,file1,ref 
+		from boardTable 
+		where seq=#{seq}
 	</select>
 	<!-- 조회수 증가 -->
 	<update id="hitUpdate" parameterType="int">
@@ -35,16 +38,18 @@
 	<!-- 게시판 검색 -->
 	<select id="getBoardListSearch" parameterType="java.util.Map" resultType="board">
 		<![CDATA[
-		select * from
-		(select rownum rn, tt.* from
-		(select * from boardTable where ${searchType} like '%'||#{keyword}||'%' order by ref desc, step asc)tt
-		)where rn>=#{startNum} and rn<=#{endNum}
+		select * 
+		from(select rownum rn, tt.* 
+		from(select * from boardTable 
+		where ${searchType} like '%'||#{keyword}||'%' 
+		order by ref desc, step asc)tt)
+		where rn>=#{startNum} and rn<=#{endNum}
 		]]>
 	</select>
 	
 	<!-- 검색한 총글수 -->
 	<select id="getBoardSearchTotalA" parameterType="java.util.Map" resultType="int">
-		select count(*) from boardTable where ${searchType} like '%'||#{keyword}||'%'
+		select count(seq) from boardTable where ${searchType} like '%'||#{keyword}||'%'
 	</select>
 	
 	
@@ -54,10 +59,12 @@
 	<select id="selectAll" parameterType="java.util.Map" resultType="board">
 <!-- 전체출력 아이디 있을때		select seq, subject, mem_id, logtime form boardTable -->
 <!-- 전체출력 아이디 없을때		select seq, subject, hit, logtime from boardTable -->
-		select * from
-		(select rownum rn, tt.* from
-		(select seq, subject, hit, logtime from boardTable order by ref desc, step asc)tt
-		)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+		select * 
+		from(select rownum rn, tt.* 
+		from(select seq, subject, hit, logtime 
+		from boardTable 
+		order by ref desc, step asc)tt)
+		where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
 	</select>
 	
 	

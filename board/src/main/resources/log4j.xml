@@ -12,7 +12,8 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.mvc.board">
-		<level value="debug" />
+		<level value="info" />
+		<appender-ref ref="console" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

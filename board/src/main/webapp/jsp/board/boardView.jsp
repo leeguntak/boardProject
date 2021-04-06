@@ -1,13 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<style>
+table{
+	left: 0;
+	right: 0;
+	top:0;
+	bottom: 0;
+	margin: 10px auto;
+}
+div.button{
+	text-align: center;
+}
+</style>
     
 <form name="boardViewForm">
 <input type="hidden" name="seq" id="seq" value="${seq }">
 <input type="hidden" name="pg" id="pg" value="${pg }">
 
 <div class="main">
-	<table border="1" width="500" cellpadding="3" cellspacing="0" frame="hsides" rules="rows">
+	<table border="1" width="60%" cellpadding="3" cellspacing="0" frame="hsides" rules="rows">
 		<tr>
 			<td colspan="3"><h3><span id="subjectSpan"></span></h3></td>
 		</tr>

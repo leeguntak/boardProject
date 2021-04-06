@@ -45,7 +45,7 @@ public class BoardController {
 	private BoardService boardService;
 	private static final String FILEPATH = "D:\\Spring\\workspace\\board\\src\\main\\webapp\\storage";
 	
-	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 
 	@RequestMapping(value="/boardList", method=RequestMethod.GET) //requestMapping대신 getmapping을 사용하면서 method 안씀
@@ -59,19 +59,19 @@ public class BoardController {
 	}
 	
 	//글목록 불러오기
-	//@RequestMapping(value="/getBoardList", method=RequestMethod.POST)
-	@GetMapping(value="/getBoardList")
+	@RequestMapping(value="/getBoardList", method=RequestMethod.POST)
+	//@GetMapping(value="/getBoardList")
 	public ModelAndView getBoardList(@RequestParam(required=false, defaultValue="1") String pg,
-									 @RequestParam(required=false, defaultValue="10") String viewNum,
-									 HttpSession session,
-									 HttpServletRequest request,
-									 HttpServletResponse response) {
+			@RequestParam(required=false, defaultValue="10") String viewNum,
+			HttpSession session,
+			HttpServletRequest request,
+			HttpServletResponse response) {
 		List<BoardTableDTO> list = boardService.getBoardList(pg, viewNum);
 		//페이징처리
 		BoardPaging boardPaging = boardService.boardPaging(pg, viewNum);
 		
 		//세션으로 아이디 필요
-		logger.info("info 로그"+request);
+		logger.info("게시판 목록");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("pg", pg);
 		mav.addObject("list", list);
@@ -80,6 +80,48 @@ public class BoardController {
 		mav.setViewName("jsonView");
 		return mav;		
 	}
+	
+//	@RequestMapping(value="/getBoardList", method=RequestMethod.POST)
+//	//@GetMapping(value="/getBoardList")
+//	public ModelAndView getBoardList(@RequestParam(required=false, defaultValue="1") String pg,
+//							   @RequestParam(required=false, defaultValue="10") String viewNum,
+//							   Model model,
+//							   HttpSession session,
+//							   HttpServletRequest request,
+//							   HttpServletResponse response) {
+//		System.out.println("3. 에이작스 실행해서 컨트롤러 진입");
+//		List<BoardTableDTO> list = boardService.getBoardList(pg, viewNum);
+//		if(list != null) {
+//			System.out.println("4. 게시물 DB뽑아옴");
+//		}else {
+//			System.out.println("4. 게시물 DB 가져오기 실패");
+//		}
+//		//페이징처리
+//		BoardPaging boardPaging = boardService.boardPaging(pg, viewNum);
+//		if(boardPaging != null) {
+//			 System.out.println("5. 페이징 DB뽑아옴");
+//		}else {
+//			System.out.println("5. 페이징  DB 가져오기 실패");
+//		}
+//		
+//		//세션으로 아이디 필요
+//		//logger.info("info 로그"+request);
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("pg", pg);
+//		mav.addObject("list", list);
+//		mav.addObject("viewNum", viewNum);
+//		mav.addObject("boardPaging", boardPaging);
+//		mav.setViewName("jsonView");
+//		
+//		System.out.println("6. 목록 가져오는 컨트롤러 끝");
+//		return mav;
+//	}
+	
+	@RequestMapping(value="/list", method=RequestMethod.GET) //requestMapping대신 getmapping을 사용하면서 method 안씀
+	public String list(HttpServletRequest request) {
+		return "/jsp/board/list.jsp";
+	}
+	
 	
 	
 	//게시판 검색 

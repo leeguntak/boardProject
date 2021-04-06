@@ -23,7 +23,11 @@
 	
 <!-- 로그인 -->
 	<select id="login" parameterType="java.util.Map" resultType="member">
-		select * from boardMembers where mem_id = #{mem_id} and mem_pwd = #{mem_pwd}
+		select mem_id, mem_name, mem_tel1, mem_tel2, mem_tel3, 
+			   mem_email1, mem_email2, mem_postcode, 
+			   mem_address, mem_detailAddress,mem_extraAddress 
+			   from boardMembers 
+			   where mem_id = #{mem_id} and mem_pwd = #{mem_pwd}
 	</select>
 	
 </mapper>

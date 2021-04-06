@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import index.controller.IndexController;
 import member.bean.MemberDTO;
 import member.service.MemberService;
 
@@ -24,9 +27,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
+	
 	//회원가입화면
 	@RequestMapping(value="/signUpForm", method=RequestMethod.GET)
 	public String signUpForm(Model model) {
+		logger.info("회원가입화면");
 		model.addAttribute("display", "/jsp/login/signUpForm.jsp");
 		return "/index";
 	}

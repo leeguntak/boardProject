@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-table {
-    border-bottom: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-}
 
 th, td {
     padding: 5px;
@@ -13,9 +8,22 @@ th, td {
 
 .boardListDiv{
 	padding: 20px 0 ;
+	position: relative;
 }
 .boardListDiv input{
 	margin: 0 0 10px 0;
+}
+.table {
+    border-collapse: collapse;
+	position: absolute;
+/* 	left: 30%;  */
+/* 	margin-left: -170px;	 */
+	left: 79px;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 100px;
+	
 }
 
 .classname {

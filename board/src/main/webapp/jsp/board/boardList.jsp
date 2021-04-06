@@ -31,23 +31,9 @@
 	            <th width="100px">조회수</th>
 	            <th width="100px">작성일</th>
 	        </tr>
-<%-- 	        <c:forEach var="data" items="${data}"> --%>
-<!-- 	        <tr> -->
-<!-- 	        	<td>{data.list.seq}</td> -->
-<!-- 	        	<td>{data.list.subject}</td> -->
-<!-- 	        	<td>0</td> -->
-<!-- 	        	<td>{data.list.hit}</td> -->
-<!-- 	        	<td>{data.list.logtime}</td> -->
-<!-- 	        <tr> -->
-<%-- 	        </c:forEach>	 --%>
 	    </table>
 	    <div> 
 
-<c:forEach items="${data1 }" var="boardList" >
- 
-<div>${boardpaing}</div>
-
-</c:forEach> 
 
 </div>
 

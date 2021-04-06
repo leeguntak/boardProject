@@ -1,8 +1,5 @@
 package index.controller;
 
-
-
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -22,6 +19,8 @@ public class IndexController {
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String index(HttpServletRequest request) {
+		logger.info("info: 메인화면");
+		logger.debug("debug: 메인화면");
 		return "/index";
 	}
 
